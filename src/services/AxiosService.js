@@ -4,3 +4,4 @@ export const api = Axios.create({
   baseURL,
   timeout: 8000
 })
+

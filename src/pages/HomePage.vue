@@ -1,44 +1,40 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
+    <div class="row">
+        <div class="col-2">
+            
+        </div>
+        <div class="col-8">
+            <router-view />
+            <PostCard v-if="isNotInConfig() === 'Home'"/>
+        </div>
+        <div class="col-2">
+            <AdCard/>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
+import Login from "../components/Login.vue";
+import PostCard from "../components/PostCard.vue";
+import AccountPage from "./AccountPage.vue";
+import { computed } from 'vue'
+import { AppState } from '../AppState'
+
 export default {
-  setup() {
-    return {}
-  }
+    setup() {
+        return {
+            user: computed(() => AppState.user),
+        };
+    },
+    methods: {
+        isNotInConfig() {
+            return this.$router.currentRoute.value.name
+        }
+    },
+    components: { Login, AccountPage, PostCard }
 }
 </script>
 
-<style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
+<style lang="scss" scoped>
 
-  .home-card {
-    width: 50vw;
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
-}
 </style>

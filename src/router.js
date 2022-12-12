@@ -9,19 +9,34 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: loadPage('HomePage')
+    component: loadPage('HomePage'),
+    children: [
+        {
+            path: 'profile',
+            name: 'Profile',
+            component: loadPage('ProfilePage'),
+            beforeEnter: authGuard
+        },
+        {
+            path: '/account',
+            name: 'Account',
+            component: loadPage('AccountPage'),
+            beforeEnter: authGuard
+        }
+    ]
   },
-  {
-    path: '/about',
-    name: 'About',
-    component: loadPage('AboutPage')
-  },
-  {
-    path: '/account',
-    name: 'Account',
-    component: loadPage('AccountPage'),
-    beforeEnter: authGuard
-  }
+//   {
+//     path: '/account',
+//     name: 'Account',
+//     component: loadPage('AccountPage'),
+//     beforeEnter: authGuard
+//   }
+//   {
+//     path: '/profile',
+//     name: 'Profile',
+//     component: loadPage('ProfilePage'),
+//     beforeEnter: authGuard
+//   }
 ]
 
 export const router = createRouter({
