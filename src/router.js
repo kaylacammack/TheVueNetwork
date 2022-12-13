@@ -6,7 +6,7 @@ function loadPage(page) {
 }
 
 const routes = [
-  {
+    {
     path: '/',
     name: 'Home',
     component: loadPage('HomePage'),
@@ -15,7 +15,22 @@ const routes = [
             path: 'profile',
             name: 'Profile',
             component: loadPage('ProfilePage'),
-            beforeEnter: authGuard
+            beforeEnter: authGuard,
+
+            children: [
+                {
+                    path: '/accountProfile/:profileId',
+                    name: 'AccountProfile',
+                    component: loadPage('ProfilePage'),
+                    beforeEnter: authGuard
+                },
+                {
+                    path: '/userProfile/:profileId',
+                    name: 'UserProfile',
+                    component: loadPage('ProfilePage'),
+                    beforeEnter: authGuard
+                },
+            ]
         },
         {
             path: '/account',

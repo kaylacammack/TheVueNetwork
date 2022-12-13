@@ -1,27 +1,7 @@
 <template>
     <div class="row">
         <div class="col-2">
-            <div class="text-center">
-                <router-link :to="{ name: 'Profile' }">
-                    <img :src="user.picture" class="picture"/>
-                </router-link>
-            </div>
-            <div>
-                <p>{{ user.class }}</p>
-                <p>{{ user.graduated }}</p>
-            </div>
-            <div>
-                <p>{{ user.name }}</p>
-            </div>
-            <div>
-                <button type="button" class="btn"><i class="mdi mdi-github">{{ user.github }}</i></button>
-            </div>
-            <div>
-                <button class="btn"><i class="mdi mdi-linkedin">{{ user.linkedin }}</i></button>
-            </div>
-            <div>
-                <button class="btn"><i class="mdi mdi-file-document-outline">{{ user.resume }}</i></button>
-            </div>
+            <ProfileSnapshot :user="user"/>
         </div>
         <div class="col-8">
             <router-view />
@@ -39,6 +19,8 @@ import PostCard from "../components/PostCard.vue";
 import AccountPage from "./AccountPage.vue";
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import ProfileSnapshot from "../components/ProfileSnapshot.vue";
+import { logger } from "../utils/Logger";
 
 export default {
     setup() {
@@ -48,10 +30,11 @@ export default {
     },
     methods: {
         isNotInConfig() {
+            logger.log('user',this.user)
             return this.$router.currentRoute.value.name
         }
     },
-    components: { Login, AccountPage, PostCard }
+    components: { Login, AccountPage, PostCard, ProfileSnapshot }
 }
 </script>
 

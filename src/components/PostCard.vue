@@ -3,7 +3,9 @@
         <div class="col-12" v-for="post in posts">
             <div class="card">
                 <div>
-                    <img :src="post.creator.picture"/>
+                    <router-link :to="{ path: 'userProfile/' + post.creator.id }">
+                        <img :src="post.creator.picture"/>
+                    </router-link>
                     <h5>{{ post.creator.name}}</h5>
                 </div>
                 <div>
