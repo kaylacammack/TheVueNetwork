@@ -16,21 +16,18 @@ const routes = [
             name: 'Profile',
             component: loadPage('ProfilePage'),
             beforeEnter: authGuard,
-
-            children: [
-                {
-                    path: '/accountProfile/:profileId',
-                    name: 'AccountProfile',
-                    component: loadPage('ProfilePage'),
-                    beforeEnter: authGuard
-                },
-                {
-                    path: '/userProfile/:profileId',
-                    name: 'UserProfile',
-                    component: loadPage('ProfilePage'),
-                    beforeEnter: authGuard
-                },
-            ]
+        },
+        {
+            path: '/accountProfile/:profileId',
+            name: 'AccountProfile',
+            component: loadPage('ProfilePage'),
+            beforeEnter: authGuard
+        },
+        {
+            path: '/userProfile/:profileId',
+            name: 'UserProfile',
+            component: loadPage('ProfilePage'),
+            beforeEnter: authGuard
         },
         {
             path: '/account',
@@ -39,19 +36,7 @@ const routes = [
             beforeEnter: authGuard
         }
     ]
-  },
-//   {
-//     path: '/account',
-//     name: 'Account',
-//     component: loadPage('AccountPage'),
-//     beforeEnter: authGuard
-//   }
-//   {
-//     path: '/profile',
-//     name: 'Profile',
-//     component: loadPage('ProfilePage'),
-//     beforeEnter: authGuard
-//   }
+  }
 ]
 
 export const router = createRouter({

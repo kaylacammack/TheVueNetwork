@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center">
-                <router-link :to="{ path: 'accountProfile/' + account.id }">
+                <router-link v-if="account.id" :to="{ name: 'AccountProfile', params: { profileId: account.id }}">
                     <img :src="account.picture" class="picture" />
                 </router-link>
             </div>

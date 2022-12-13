@@ -33,15 +33,7 @@ export default {
         };
     },
     methods: {
-        // async getAds() {
-        //     logger.log('made it');
-        //     try {
-        //         await adService.getAds()
-        //     } catch (error) {
-        //         logger.error(error)
-        //         Pop.error(error)
-        //     }
-        // }
+
     }
 }
 </script>

@@ -9,12 +9,8 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto">
-            <li>
-                <router-link :to="{ name: 'Profile' }" class="btn text-success lighten-30 selectable text-uppercase">
-                    Profile
-                </router-link>
-            </li>
+        <ul class="me-auto ">
+            <SearchBar/>
         </ul>
         <!-- LOGIN COMPONENT HERE -->
         <Login/>
@@ -26,6 +22,7 @@
 import Login from './Login.vue'
 import { computed } from 'vue'
 import { AppState } from '../AppState'
+import SearchBar from "./SearchBar.vue"
 export default {
     setup() {
         return {
@@ -33,8 +30,9 @@ export default {
         }
     },
     components: {
-        Login
-    }
+    Login,
+    SearchBar
+}
 }
 </script>
 

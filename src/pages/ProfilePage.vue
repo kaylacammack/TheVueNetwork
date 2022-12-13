@@ -16,9 +16,12 @@
         <h1>{{profile.name}}</h1>
         <p>{{profile.bio}}</p>
         <div v-if="account.id == profile.id" class="d-flex justify-content-end">
-            <button class="btn btn-primary-outline">Edit</button>
+            <router-link :to="{ name: 'Account' }">
+                <button class="btn btn-primary-outline">Edit</button>
+            </router-link>
         </div>
     </div>
+    <PostCard/>
 </template>
 
 <script>
@@ -28,6 +31,7 @@ import { profileService } from "../services/ProfileService.js";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { AppState } from '../AppState.js'
+import PostCard from "../components/PostCard.vue";
 
 export default {
     setup() {
@@ -35,19 +39,21 @@ export default {
         async function getProfileByProfileId() {
             try {
                 await profileService.getProfileByProfileId(route.params.profileId);
-            } catch (error) {
-                logger.error(error)
-                Pop.error(error.message)
+            }
+            catch (error) {
+                logger.error(error);
+                Pop.error(error.message);
             }
         }
         onMounted(() => {
             getProfileByProfileId();
-        })
+        });
         return {
             profile: computed(() => AppState.activeProfile),
             account: computed(() => AppState.account)
-        }
-    }
+        };
+    },
+    components: { PostCard }
 }
 </script>
 

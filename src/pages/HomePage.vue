@@ -4,7 +4,7 @@
             <ProfileSnapshot :user="user"/>
         </div>
         <div class="col-8">
-            <router-view />
+            <router-view :key="$route.fullPath"/>
             <PostCard v-if="isNotInConfig() === 'Home'"/>
         </div>
         <div class="col-2">
